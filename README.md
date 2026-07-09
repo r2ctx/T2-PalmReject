@@ -145,11 +145,11 @@ Stop the manual process with `Ctrl+C` before starting the systemd service.
 ## Known limitations
 
 - Coordinate ranges and palm thresholds are hardcoded for the tested Apple
-  trackpad.
-- Thumb support is limited and will be improved in a later classifier.
-- Device detection targets the Apple internal keyboard/trackpad name.
-- This release has not yet been validated across other MacBook models or
-  non-Arch distributions.
+  trackpad
+- Thumbing support is limited
+- Device detection targets the Apple internal keyboard/trackpad name
+- Current release has not yet been validated across other MacBook models or
+  non-Arch distributions
 
 ## Architecture
 
