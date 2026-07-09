@@ -1,45 +1,43 @@
 # T2 PalmReject
+Aims to improve palmrejection functionality for those running t2linux on their macbooks.
 
-T2 PalmReject is a lightweight userspace palm-rejection filter for the Apple
+T2 lightweight userspace palm-rejection filter for the Apple
 internal keyboard/trackpad found on a tested Intel T2 MacBook running Linux.
 It grabs the physical trackpad, filters palm-shaped contacts, and forwards
 accepted contacts through a virtual multitouch touchpad so libinput keeps
 handling pointer acceleration, two-finger scrolling, clicking, and gestures.
 
-## Current support
+## Compatibility
 
-This release is intentionally narrow.
-
-- Tested target: 2020 Intel MacBook Air with T2 Linux
+Currently tested on:
+- 2020 Intel MacBook Air with T2 Linux
 - Distribution: Arch-based Linux
-- Desktop tested: Hyprland
+- Desktop envio: Hyprland
 - Input stack: evdev, uinput, and libinput
 - Service manager: systemd
 
-The architecture is not inherently Hyprland-specific, but the current axis
-ranges and palm thresholds are calibrated for the tested Apple trackpad. Do
-not advertise this release as a universal Linux palm-rejection tool.
+I image it would work on other 13in macbooks running t2linux, 
 
 ## Safety warning
 
 PalmReject exclusively grabs the real trackpad while it is running. If the
 virtual touchpad fails, pointer input can appear to stop.
 
-Emergency recovery from a terminal, TTY, or external mouse:
+Stop palmreject:
 
 ```bash
 sudo systemctl stop palmreject.service
 ```
 
-To remove it completely:
+Remove it completely:
 
 ```bash
 sudo ./uninstall.sh
 ```
 
-## Requirements
+## Dependencies
 
-Install the standard Arch build tools and libinput utilities:
+Install standard Arch build tools and libinput utilities:
 
 ```bash
 sudo pacman -S --needed base-devel libinput
