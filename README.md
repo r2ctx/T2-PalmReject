@@ -16,8 +16,6 @@ Currently tested on:
 - Input stack: evdev, uinput, and libinput
 - Service manager: systemd
 
-I image it would work on other 13in macbooks running t2linux, 
-
 ## Safety warning
 
 PalmReject exclusively grabs the real trackpad while it is running. If the
