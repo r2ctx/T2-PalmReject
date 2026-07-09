@@ -1,8 +1,6 @@
 # T2 PalmReject
 Aims to improve palm rejection functionality for those running t2linux on their macbooks.
 
-T2 lightweight userspace palm-rejection filter for the Apple
-internal keyboard/trackpad found on a tested Intel T2 MacBook running Linux.
 It grabs the physical trackpad, filters palm-shaped contacts, and forwards
 accepted contacts through a virtual multitouch touchpad so libinput keeps
 handling pointer acceleration, two-finger scrolling, clicking, and gestures.
