@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+set -u
+
+SERVICE="palmreject.service"
+CONFIG="/etc/palmreject.conf"
+STATE_FILE="/run/palmreject-was-active"
+
+if [[ -r "$CONFIG" ]]; then
+    # shellcheck disable=SC1090
+    source "$CONFIG"
+fi
+
+PALMREJECT_RESUME_DELAY="${PALMREJECT_RESUME_DELAY:-2}"
+PALMREJECT_RESTORE_BACKLIGHT="${PALMREJECT_RESTORE_BACKLIGHT:-0}"
+PALMREJECT_BACKLIGHT_DEVICE="${PALMREJECT_BACKLIGHT_DEVICE:-:white:kbd_backlight}"
+PALMREJECT_BACKLIGHT_LEVEL="${PALMREJECT_BACKLIGHT_LEVEL:-2%}"
+
+case "${1:-}" in
+    pre)
+        if systemctl is-active --quiet "$SERVICE"; then
+            touch "$STATE_FILE"
+            systemctl stop "$SERVICE"
+        else
+            rm -f "$STATE_FILE"
+        fi
+        ;;
+
+    post)
+        sleep "$PALMREJECT_RESUME_DELAY"
+
+        if [[ "$PALMREJECT_RESTORE_BACKLIGHT" == "1" ]] && \
+           command -v brightnessctl >/dev/null 2>&1; then
+            brightnessctl \
+                -d "$PALMREJECT_BACKLIGHT_DEVICE" \
+                set "$PALMREJECT_BACKLIGHT_LEVEL" \
+                >/dev/null 2>&1 || true
+        fi
+
+        if [[ -e "$STATE_FILE" ]]; then
+            rm -f "$STATE_FILE"
+            systemctl start "$SERVICE"
+        fi
+        ;;
+esac
+
+exit 0

@@ -1,0 +1,15 @@
+[Unit]
+Description=T2 PalmReject virtual touchpad palm rejection
+After=systemd-udevd.service
+Wants=systemd-udevd.service
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/palmreject.conf
+ExecStart=/usr/local/bin/palmreject ${PALMREJECT_DEVICE}
+Restart=on-failure
+RestartSec=2
+TimeoutStopSec=5
+
+[Install]
+WantedBy=multi-user.target
