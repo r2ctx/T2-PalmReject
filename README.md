@@ -147,7 +147,7 @@ Stop the manual process with `Ctrl+C` before starting the systemd service.
 - coordinate ranges and palm thresholds are hardcoded for the tested Apple
   trackpad
 - limited support for thumbing
-- limited support for pinch zooming
+- pinch zooming is a little buggy
 
 ## Architecture
 
