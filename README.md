@@ -1,18 +1,18 @@
 # T2 PalmReject
-Aims to improve palm rejection functionality for those running t2linux on their macbooks.
+This project aims to improve palm rejection functionality for those running t2linux on their macbooks.
 
-It grabs the physical trackpad, filters palm-shaped contacts, and forwards
+Grabs the physical trackpad, filters palm-shaped contacts, and forwards
 accepted contacts through a virtual multitouch touchpad so libinput keeps
 handling pointer acceleration, two-finger scrolling, clicking, and gestures.
 
 ## Compatibility
 
 Currently tested on:
-- 2020 Intel MacBook Air with T2 Linux
-- Distribution: Arch-based Linux
-- Desktop envio: Hyprland
-- Input stack: evdev, uinput, and libinput
-- Service manager: systemd
+- hardware: 2020 Intel MacBook Air (A2179)
+- distro: Arch
+- desktop envio: Hyprland
+- input stack: evdev, uinput, and libinput
+- service manager: systemd
 
 ## Safety warning
 
@@ -66,15 +66,15 @@ sudo ./install.sh
 
 The installer:
 
-1. Builds `palmreject` from source.
+1. Builds `palmreject` from source
 2. Detects the Apple internal trackpad using stable `/dev/input/by-id` or
-   `/dev/input/by-path` links.
-3. Writes `/etc/palmreject.conf`.
-4. Installs `/usr/local/bin/palmreject`.
-5. Installs and enables `palmreject.service`.
+   `/dev/input/by-path` links
+3. Writes `/etc/palmreject.conf`
+4. Installs `/usr/local/bin/palmreject`
+5. Installs and enables `palmreject.service`
 6. Installs a suspend/resume hook that stops the service before sleep and
-   restarts it after wake.
-7. Loads `uinput` and configures it to load at boot.
+   restarts it after wake
+7. Loads `uinput` and configures it to load at boot
 
 To choose the device manually:
 
@@ -142,14 +142,12 @@ Stop the manual process with `Ctrl+C` before starting the systemd service.
 └── README.md
 ```
 
-## Known limitations
+## Current Limitations
 
-- Coordinate ranges and palm thresholds are hardcoded for the tested Apple
+- coordinate ranges and palm thresholds are hardcoded for the tested Apple
   trackpad
-- Thumbing support is limited
-- Device detection targets the Apple internal keyboard/trackpad name
-- Current release has not yet been validated across other MacBook models or
-  non-Arch distributions
+- limited support for thumbing
+- limited support for pinch zooming
 
 ## Architecture
 
