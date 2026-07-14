@@ -8,11 +8,11 @@ handling pointer acceleration, two-finger scrolling, clicking, and gestures.
 ## Compatibility
 
 Currently tested on:
-- hardware: 2020 Intel MacBook Air (A2179)
-- distro: Arch
-- desktop envio: Hyprland
-- input stack: evdev, uinput, and libinput
-- service manager: systemd
+- Hardware: 2020 Intel MacBook Air (A2179)
+- Distro: arch
+- Desktop Envio: Hyprland
+- Input Stack: evdev, uinput, and libinput
+- Service Manager: systemd
 
 ## Safety warning
 
